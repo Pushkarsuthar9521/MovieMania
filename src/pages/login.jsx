@@ -34,7 +34,7 @@ const userLogin = async (e) => {
            
             console.log("Login successful");
             alert("Login successful");
-            e
+            
           }
         } else {
           console.error("Login failed with status: " + res.status);
