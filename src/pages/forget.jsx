@@ -1,22 +1,25 @@
 import Link from "next/link";
 import React from "react";
 
-const userLogin = async (e) => {
+const forget = async (e) => {
   
   e.preventDefault();
  
   const email = e.target.elements.email.value;
   const password = e.target.elements.password.value;
+  const confirmpassword = e.target.elements.confirmpassword.value;
   
-  console.log("user data", email, password)
+  console.log("user data", email, password, confirmpassword)
 
-  const body = {email, password};
+  const body = {email, password, confirmpassword};
     
   if (body.email === "" || body.password === "") {
     return alert("Enter valid data");
-  } else {
+  } else if (body.password !== body.confirmpassword){
+     alert("password does not match");
+  }else {
     try {
-      const res = await fetch("http://localhost:3007/userlogin", {
+      const res = await fetch("http://localhost:3007/user/forget", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -50,14 +53,14 @@ const userLogin = async (e) => {
 };
 
 
-const login = () => {
+const forgetpassword = () => {
   return (
     <>
       <div className="flex flex-col items-center justify-center w-screen h-screen bg-gray-200 text-gray-700">
-        <h1 className="font-bold text-2xl">Welcome Back :)</h1>
+        <h1 className="font-bold text-2xl">Reset your password</h1>
         <form
           className="flex flex-col bg-white rounded shadow-lg p-12 mt-12"
-          onSubmit={userLogin}
+          onSubmit={forget}
         >
           <label className="font-semibold text-xs" for="usernameField" >
              Email
@@ -77,22 +80,26 @@ const login = () => {
             id="password"
             name="password"
           />
+          <label className="font-semibold text-xs mt-3" for="passwordField">
+           confirm Password
+          </label>
+          <input
+            className="flex items-center h-12 px-4 w-64 bg-gray-200 mt-2 rounded focus:outline-none focus:ring-2"
+            type="password"
+            id="confirmpassword"
+            name="confirmpassword"
+          />
           <button className="flex items-center justify-center h-12 px-6 w-64 bg-blue-600 mt-8 rounded font-semibold text-sm text-blue-100 hover:bg-blue-700">
-            Login
+            Change password
           </button>
-          <div className="flex mt-6 justify-center text-xs">
-            <Link className="text-blue-400 hover:text-blue-500" href="/forget">
-              Forgot Password
-            </Link>
-            <span className="mx-2 text-gray-300">/</span>
-            <Link className="text-blue-400 hover:text-blue-500" href="/Signup">
-              Sign Up
-            </Link>
-          </div>
+          
+       
+            
+          
         </form>
       </div>
     </>
   );
 };
 
-export default login;
+export default forgetpassword;

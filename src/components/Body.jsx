@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Loading from "./Loading";
 
 
 const Body = () => {
@@ -30,7 +31,7 @@ const Body = () => {
 
   return (
     <>
-      {isloading?(<div className="m-60">Loading</div>):
+      {isloading?(<div className="m-60"><Loading/></div>):
 
       (
       <div className="container mx-auto top-20 pt-6  ">
@@ -51,7 +52,7 @@ const Body = () => {
                 <p className="text-lg text-black font-semibold">{item.title}</p>
                 <p className="text-gray-500">{item.year}</p>
                 <p className="text-gray-500">{item.duration}</p>
-                <p className="text-yellow-500">★{item.rating}</p>
+                <p className="text-black">★{item.rating}</p>
               </div>
             </div>
           ))}
