@@ -1,6 +1,7 @@
 use case
 
-![Uploading Usecase.png…]()
+
+![Usecase](https://github.com/Pushkarsuthar9521/MovieMania/assets/79029738/edd2bef2-a632-4de0-8b9a-f3683cc3b5f8)
 
 
 
